@@ -26,6 +26,8 @@ function App() {
   const firstCountryIndex = lastCountryIndex - countriesPerPage
   const currentCountries = countries.slice(firstCountryIndex, lastCountryIndex)
 
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
+
   return (
     <main className= 'w-[100vw] relative bg-slate-200 '>
       <div className='fixed top-4 right-10'><Clock/></div>
@@ -34,8 +36,7 @@ function App() {
             Countries
           </h1>
           <Countries countries={currentCountries} loading={loading}/>
-          <Pagination countriesPerPage={countriesPerPage} totalCountries={countries.length}/>
-      
+          <Pagination countriesPerPage={countriesPerPage} totalCountries={countries.length} currentPageNumber={currentPage} pagination={paginate}/>
       
     </main>
   );
